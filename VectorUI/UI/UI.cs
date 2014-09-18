@@ -12,6 +12,7 @@ namespace VectorUI.UI
         private readonly IVGAScreen _screen;
         private readonly IMouse _mouse;
         private readonly IPower _power;
+
         public UI(IVGAScreen screen, IMouse mouse, IPower power)
         {
             _screen = screen;
@@ -23,6 +24,10 @@ namespace VectorUI.UI
         {
             while (_power.On)
             {
+                var x = _mouse.X;
+                var y = _mouse.Y;
+                _screen.Screen[x + y * 320] = 255;
+
                 _screen.VRetrace();
             }
         }

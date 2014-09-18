@@ -7,7 +7,7 @@ using VectorUI.Fake.Hardware;
 
 namespace VectorUI
 {
-    class MainViewModel : IVGAScreen, IMouse, IPower
+    class MainViewModel : IVGAScreen, IPower
     {
         private readonly byte[] _screen = new byte[320 * 200];
         private readonly WriteableBitmap _screenBitmap;
@@ -19,7 +19,7 @@ namespace VectorUI
         public MainViewModel()
         {
             On = true;
-            _screenBitmap = new WriteableBitmap(320, 240, 96, 96, PixelFormats.Indexed8, _palette);
+            _screenBitmap = new WriteableBitmap(320, 200, 96, 96, PixelFormats.Indexed8, _palette);
         }
 
         public WriteableBitmap ScreenBitmap { get { return _screenBitmap; } }

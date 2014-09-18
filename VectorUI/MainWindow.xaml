@@ -4,6 +4,6 @@
         Title="MainWindow" Height="350" Width="525"
         Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid>
-        
+        <Image Stretch="Uniform" Source="{Binding ScreenBitmap}" RenderOptions.BitmapScalingMode="NearestNeighbor" MouseMove="Image_MouseMove" />
     </Grid>
 </Window>

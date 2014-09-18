@@ -24,16 +24,17 @@ namespace VectorUI.UI
 
         public void Run()
         {
-            var screen = new Bitmap(_screen.Screen, 320, 200, 320);
-            var target = new BitmapRenderer(screen);
+            var screenBitmap = new Bitmap(_screen.Screen, 320, 200, 320);
+            var screen = new BitmapRenderer(screenBitmap);
             var root = new Element();
-            root.Add(new Box(screen.Area, 128));
+            root.Add(new Box(screenBitmap.Area, 128));
+            screen.Target = new Rectangle(new Point(10, 10), new Point(200, 100));
             while (_power.On)
             {
                 //_screen.Screen[_mouse.X + _mouse.Y * 320] = 255;
 
                 _screen.VRetrace();
-                root.Render(target);
+                root.Render(screen);
             }
         }
     }

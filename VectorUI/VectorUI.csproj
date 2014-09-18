@@ -55,6 +55,7 @@
     <Compile Include="UI\Grfx\Rectangle.cs" />
     <Compile Include="UI\Grfx\Element.cs" />
     <Compile Include="UI\Grfx\Point.cs" />
+    <Compile Include="UI\Grfx\Size.cs" />
     <Compile Include="UI\UI.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

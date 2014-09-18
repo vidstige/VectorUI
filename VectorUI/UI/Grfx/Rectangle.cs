@@ -13,5 +13,12 @@
 
         public Point TopLeft { get { return _min; } }
         public Point BottomRight { get { return _max; } }
+
+        public Size Size { get { return new Size(_max.X - _min.X, _max.Y - _min.Y); } }
+
+        public Rectangle Scale(Rectangle source, Rectangle target)
+        {
+            return new Rectangle(_min.Scale(source, target), _max.Scale(source, target));
+        }
     }
 }

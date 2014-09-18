@@ -22,6 +22,8 @@
             _pixels = pixels;
         }
 
+        public int Width { get { return _width; } }
+        public int Height { get { return _height; } }
         public byte[] Pixels { get { return _pixels; } }
         public int Index(int x, int y)
         {

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VectorUI.Fake.Hardware;
+using VectorUI.UI.Elements;
+using VectorUI.UI.Grfx;
 
 namespace VectorUI.UI
 {
@@ -22,13 +24,16 @@ namespace VectorUI.UI
 
         public void Run()
         {
+            var screen = new Bitmap(_screen.Screen, 320, 200, 320);
+            var target = new BitmapRenderer(screen);
+            var root = new Element();
+            root.Add(new Box(screen.Area, 128));
             while (_power.On)
             {
-                var x = _mouse.X;
-                var y = _mouse.Y;
-                _screen.Screen[x + y * 320] = 255;
+                //_screen.Screen[_mouse.X + _mouse.Y * 320] = 255;
 
                 _screen.VRetrace();
+                root.Render(target);
             }
         }
     }

@@ -5,9 +5,9 @@ namespace VectorUI.UI.Elements
     class Box: Element
     {
         private readonly Rectangle _rectangle;
-        private readonly byte _color;
+        private readonly uint _color;
 
-        public Box(Rectangle rectangle, byte color)
+        public Box(Rectangle rectangle, uint color)
         {
             _rectangle = rectangle;
             _color = color;

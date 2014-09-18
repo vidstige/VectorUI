@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,7 +48,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Fake\Hardware\IPower.cs" />
-    <Compile Include="Fake\Hardware\IVGAScreen.cs" />
+    <Compile Include="Fake\Hardware\ISVGAScreen.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="UI\Elements\Box.cs" />
     <Compile Include="UI\Grfx\Bitmap.cs" />

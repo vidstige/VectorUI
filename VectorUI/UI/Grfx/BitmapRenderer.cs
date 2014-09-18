@@ -1,4 +1,5 @@
 ﻿
+using System;
 namespace VectorUI.UI.Grfx
 {
     public class BitmapRenderer
@@ -23,20 +24,22 @@ namespace VectorUI.UI.Grfx
             set { _target = value; }
         }
         
-        public void Draw(Rectangle rectangle, byte color)
+        public unsafe void Draw(Rectangle rectangle, uint color)
         {
             var r = rectangle.Scale(Source, Target);
-
-            var pixels = _bitmap.Pixels;
-            for (int y = (int)r.TopLeft.Y; y < (int)r.BottomRight.Y; y++)
+            fixed (byte* raw = _bitmap.Pixels)
             {
-                int start = (int)r.TopLeft.X;
-                int end = (int)r.BottomRight.X;
-                int begin = _bitmap.Index(start, y);
-                for (int x = start; x < end; x++)
+                var pixels = (uint*)raw;
+                for (int y = (int)r.TopLeft.Y; y < (int)r.BottomRight.Y; y++)
                 {
-                    pixels[begin++] = color;
-                }                
+                    int start = (int)r.TopLeft.X;
+                    int end = (int)r.BottomRight.X;
+                    int begin = _bitmap.Index(start, y);
+                    for (int x = start; x < end; x++)
+                    {
+                        pixels[begin++] = color;
+                    }
+                }
             }
         }
     }

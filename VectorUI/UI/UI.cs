@@ -11,11 +11,11 @@ namespace VectorUI.UI
 {
     public class UI
     {
-        private readonly IVGAScreen _screen;
+        private readonly ISVGAScreen _screen;
         private readonly IMouse _mouse;
         private readonly IPower _power;
 
-        public UI(IVGAScreen screen, IMouse mouse, IPower power)
+        public UI(ISVGAScreen screen, IMouse mouse, IPower power)
         {
             _screen = screen;
             _mouse = mouse;
@@ -24,10 +24,10 @@ namespace VectorUI.UI
 
         public void Run()
         {
-            var screenBitmap = new Bitmap(_screen.Screen, 320, 200, 320);
+            var screenBitmap = new Bitmap(_screen.Screen, 800, 600, 800);
             var screen = new BitmapRenderer(screenBitmap);
             var root = new Element();
-            root.Add(new Box(screenBitmap.Area, 128));
+            root.Add(new Box(screenBitmap.Area, 0xff404040));
             screen.Target = new Rectangle(new Point(10, 10), new Point(200, 100));
             while (_power.On)
             {

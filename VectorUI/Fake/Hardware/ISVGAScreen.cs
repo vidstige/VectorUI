@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VectorUI.Fake.Hardware
 {
-    public interface IVGAScreen
+    public interface ISVGAScreen
     {
         byte[] Screen { get; }
         void VRetrace();

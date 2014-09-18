@@ -7,26 +7,26 @@ using VectorUI.Fake.Hardware;
 
 namespace VectorUI
 {
-    class MainViewModel : IVGAScreen, IPower
+    class MainViewModel : ISVGAScreen, IPower
     {
-        private readonly byte[] _screen = new byte[320 * 200];
+        private const int _stride = 800 * 4;
+        private readonly byte[] _screen = new byte[_stride * 600];
         private readonly WriteableBitmap _screenBitmap;
-        private readonly BitmapPalette _palette = BitmapPalettes.Gray256;
-        private static readonly Int32Rect _rect = new Int32Rect(0, 0, 320, 200);
+        private static readonly Int32Rect _rect = new Int32Rect(0, 0, 800, 600);
 
         private readonly AutoResetEvent _verticalRetrace = new AutoResetEvent(false);
 
         public MainViewModel()
         {
             On = true;
-            _screenBitmap = new WriteableBitmap(320, 200, 96, 96, PixelFormats.Indexed8, _palette);
+            _screenBitmap = new WriteableBitmap(_rect.Width, _rect.Height, 96, 96, PixelFormats.Bgra32, null);
         }
 
         public WriteableBitmap ScreenBitmap { get { return _screenBitmap; } }
 
         public void Draw()
         {
-            _screenBitmap.WritePixels(_rect, _screen, 320, 0);
+            _screenBitmap.WritePixels(_rect, _screen, _stride, 0);
             _verticalRetrace.Set();
         }
 

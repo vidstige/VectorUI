@@ -74,7 +74,7 @@ namespace VectorUI
         {
             var element = (UIElement)sender;
             var point = e.GetPosition(element);
-            _mousePosition = Scale(point, element.RenderSize, new Size(320, 200));
+            _mousePosition = Scale(point, element.RenderSize, new Size(800, 600));
         }
     }
 }

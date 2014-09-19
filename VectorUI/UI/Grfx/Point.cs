@@ -23,6 +23,11 @@
             return new Point(_x + p._x, _y + p._y);
         }
 
+        public Point Plus(Size size)
+        {
+            return new Point(_x + size.Width, _y + size.Height);
+        }
+
         public Point Multiply(Size s)
         {
             return new Point(_x * s.Width, _y * s.Height);
@@ -40,5 +45,6 @@
 
         public float X { get { return _x; } }
         public float Y { get { return _y; } }
+
     }
 }

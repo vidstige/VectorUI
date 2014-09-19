@@ -47,14 +47,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Apps\Calculator.cs" />
     <Compile Include="Fake\Hardware\IPower.cs" />
     <Compile Include="Fake\Hardware\ISVGAScreen.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="UI\Elements\App.cs" />
     <Compile Include="UI\Elements\Box.cs" />
+    <Compile Include="UI\Elements\Window.cs" />
     <Compile Include="UI\Grfx\Bitmap.cs" />
     <Compile Include="UI\Grfx\BitmapRenderer.cs" />
     <Compile Include="UI\Grfx\Rectangle.cs" />
-    <Compile Include="UI\Grfx\Element.cs" />
+    <Compile Include="UI\Elements\Element.cs" />
     <Compile Include="UI\Grfx\Point.cs" />
     <Compile Include="UI\Grfx\Size.cs" />
     <Compile Include="UI\UI.cs" />

@@ -6,11 +6,13 @@ namespace VectorUI.UI.Grfx
     {
         private readonly Bitmap _bitmap;
         private Rectangle _target;
+        private Rectangle _clip;
 
         public BitmapRenderer(Bitmap target)
         {
             _bitmap = target;
             _target = Source;
+            _clip = Source;
         }
 
         public Rectangle Source
@@ -22,6 +24,12 @@ namespace VectorUI.UI.Grfx
         {
             get { return _target; }
             set { _target = value; }
+        }
+
+        public Rectangle Clip
+        {
+            get { return _clip; }
+            set { _clip = value; }
         }
         
         public unsafe void Draw(Bitmap bitmap, Point p)

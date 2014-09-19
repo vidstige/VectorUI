@@ -20,5 +20,10 @@
         {
             return new Rectangle(_min.Scale(source, target), _max.Scale(source, target));
         }
+
+        public Rectangle MoveTo(Point absolute)
+        {
+            return new Rectangle(absolute, absolute.Plus(_max.Minus(_min)));
+        }
     }
 }

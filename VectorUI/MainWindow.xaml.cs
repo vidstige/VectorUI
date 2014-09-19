@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using VectorUI.Apps;
 using VectorUI.Fake.Hardware;
 
 namespace VectorUI
@@ -29,13 +30,15 @@ namespace VectorUI
             _demoThread.IsBackground = false;
             _demoThread.Name = "Demo Runner";
 
-            _timer.Interval = TimeSpan.FromMilliseconds(40);
+            _timer.Interval = TimeSpan.FromMilliseconds(20);
             _timer.Tick += _timer_Tick;
         }
 
         private void RunDemo(object state)
         {
-            new UI.UI(_viewModel, this, _viewModel).Run();
+            var ui = new UI.UI(_viewModel, this, _viewModel);
+            ui.Start(new Calculator());
+            ui.Run();
         }
 
         private void _timer_Tick(object sender, System.EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using VectorUI.UI.Grfx;
 
-namespace VectorUI.UI.Grfx
+namespace VectorUI.UI.Elements
 {
     public class Element
     {

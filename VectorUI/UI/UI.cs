@@ -14,6 +14,7 @@ namespace VectorUI.UI
         private readonly ISVGAScreen _screen;
         private readonly IMouse _mouse;
         private readonly IPower _power;
+        private readonly List<Elements.App> _apps = new List<Elements.App>();
         private Bitmap _cursor;
 
         public UI(ISVGAScreen screen, IMouse mouse, IPower power)
@@ -37,6 +38,11 @@ namespace VectorUI.UI
             }
         }
 
+        public void Start(Elements.App app)
+        {
+            _apps.Add(app);
+        }
+
         public void Run()
         {
             var screenBitmap = new Bitmap(_screen.Screen, 800, 600, 800*4);
@@ -44,7 +50,7 @@ namespace VectorUI.UI
             var screen = new BitmapRenderer(screenBitmap);
             var root = new Element();
             root.Add(new Box(screenBitmap.Area, 0xff404040));
-            //desktop.Target = new Rectangle(new Point(10, 10), new Point(200, 100));
+            
             while (_power.On)
             {
                 screen.Draw(Cursor, new Point(_mouse.X, _mouse.Y));
@@ -52,6 +58,14 @@ namespace VectorUI.UI
 
                 _screen.VRetrace();
                 root.Render(desktop);
+
+                foreach (Elements.App app in _apps)
+                {
+                    foreach (Window window in app.Windows)
+                    {
+                        window.Render(desktop);
+                    }
+                }
             }
         }
     }
